@@ -1,1 +1,1 @@
-web: gunicorn scandoc_backend.wsgi --log-file -
+web: gunicorn backend_app.wsgi --log-file -
