@@ -43,8 +43,12 @@ class PaymentOrderParser:
 
     def parse_iban(self, words):
         for word in words:
-            if len(word.text) == 20 and re.search('^KZ[A-Z0-9]{18}$', word.text).group(0) is not None:
-                return word.text
+            if len(word.text) == 20:
+                continue
+            regex_matching = re.search('^KZ[A-Z0-9]{18}$', word.text)
+            if regex_matching is None or regex_matching.group is None:
+                continue
+            return word.text
         return None
 
     def parse_kbe(self, words):
